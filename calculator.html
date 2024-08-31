@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0e0d0d;
+        }
+
+        .calculator {
+            width: 300px;
+            margin: 100px auto;
+            background-color: #827e7e;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator-header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .calculator-display {
+            font-size: 36px;
+            text-align: right;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .calculator-button {
+            font-size: 24px;
+            background-color: #666;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .calculator-button:hover {
+            background-color: #444;
+        }
+
+        .calculator-button.clear {
+            background-color: #f44336;
+        }
+
+        .calculator-button.clear:hover {
+            background-color: #d32f2f;
+        }
+
+        .calculator-button.equals {
+            background-color: #32cf37;
+        }
+
+        .calculator-button.equals:hover {
+            background-color: #3cc743;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-header">Beautiful Calculator</div>
+        <div class="calculator-display" id="display">0</div>
+        <div class="calculator-buttons">
+            <button class="calculator-button" onclick="addToDisplay('7')">7</button>
+            <button class="calculator-button" onclick="addToDisplay('8')">8</button>
+            <button class="calculator-button" onclick="addToDisplay('9')">9</button>
+            <button class="calculator-button" onclick="addToDisplay('+')">+</button>
+            <button class="calculator-button" onclick="addToDisplay('4')">4</button>
+            <button class="calculator-button" onclick="addToDisplay('5')">5</button>
+            <button class="calculator-button" onclick="addToDisplay('6')">6</button>
+            <button class="calculator-button" onclick="addToDisplay('-')">-</button>
+            <button class="calculator-button" onclick="addToDisplay('1')">1</button>
+            <button class="calculator-button" onclick="addToDisplay('2')">2</button>
+            <button class="calculator-button" onclick="addToDisplay('3')">3</button>
+            <button class="calculator-button" onclick="addToDisplay('*')">*</button>
+            <button class="calculator-button clear" onclick="clearDisplay()">C</button>
+            <button class="calculator-button" onclick="addToDisplay('0')">0</button>
+            <button class="calculator-button" onclick="addToDisplay('.')">.</button>
+            <button class="calculator-button" onclick="addToDisplay('/')">/</button>
+            <button class="calculator-button equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            var display = document.getElementById('display');
+            if (display.textContent === '0' && value !== '.') {
+                display.textContent = value;
+            } else {
+                display.textContent += value;
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').textContent = '0';
+        }
+
+        function calculate() {
+            var display = document.getElementById('display');
+            try {
+                display.textContent = eval(display.textContent);
+            } catch (error) {
+                display.textContent = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
